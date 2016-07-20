@@ -1,0 +1,4 @@
+services:
+#    mehdie_commerce.example:
+#        class: MEHDI\ECommerceBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]

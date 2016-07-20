@@ -1,0 +1,3 @@
+mehdie_commerce_homepage:
+    path:     /
+    defaults: { _controller: MEHDIECommerceBundle:Default:index }

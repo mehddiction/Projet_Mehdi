@@ -1,0 +1,26 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}
+	Accueil - {{parent()}}
+{% endblock %}
+
+{% block body %}
+	<div class="well">
+		<p>Voici les différents produits que je mets en vente !</p>
+		<p>
+			{% if not is_granted(IS_AUTHENTICATED_FULLY)%}
+				<a href="" class="btn btn-default">
+					<i class="glyphicon glyphicon-log-in"></i>
+				Se connecter
+			</a>
+				<a href="" class="btn btn-default">
+					<i class="glyphicon glyphicon-user"></i>
+				S'inscrire
+			</a>
+			{% endif %}
+		</p>
+	</div>
+	<div class="row">
+		<h2>Nos derniers produits</h2>
+	</div>
+{% endblock %}

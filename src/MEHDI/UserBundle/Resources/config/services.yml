@@ -1,0 +1,4 @@
+services:
+#    mehdi_user.example:
+#        class: MEHDI\UserBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]

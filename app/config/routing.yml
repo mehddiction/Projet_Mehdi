@@ -1,0 +1,29 @@
+mehdi_core:
+    resource: "@MEHDICoreBundle/Resources/config/routing.yml"
+    prefix:   /
+
+mehdie_commerce:
+    resource: "@MEHDIECommerceBundle/Resources/config/routing.yml"
+    prefix:   /
+
+mehdi_user:
+    resource: "@MehdiUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+user:
+    resource: "@UserBundle/Resources/config/routing.yml"
+    prefix:   /user
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+
+login:
+    path:   /login
+    defaults:   { _controller: MehdiUserBundle:Security:login}
+    
+login_check:
+    path:   /login_check
+
+logout:
+    path:   /logout
