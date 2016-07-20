@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new MEHDI\UserBundle\MehdiUserBundle(),
             new MEHDI\ECommerceBundle\MEHDIECommerceBundle(),
             new MEHDI\CoreBundle\MEHDICoreBundle(),
+			new FOS\UserBundle\FOSUserBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

@@ -8,7 +8,7 @@
 	<div class="well">
 		<p>Voici les différents produits que je mets en vente !</p>
 		<p>
-			{% if not is_granted(IS_AUTHENTICATED_FULLY)%}
+			{% if not is_granted("IS_AUTHENTICATED_REMEMBERED")%}
 				<a href="" class="btn btn-default">
 					<i class="glyphicon glyphicon-log-in"></i>
 				Se connecter
