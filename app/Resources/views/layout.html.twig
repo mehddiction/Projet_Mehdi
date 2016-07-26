@@ -43,17 +43,38 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#">Logo</a>
+      <a class="navbar-brand" href="{{path('mehdi_core_homepage')}}">MehdE-Commerce</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Products</a></li>
+        <li {% if 'mehdi_core_homepage' in app.request.attributes.get('_route')%} class="active" {% endif %}><a href="{{path('mehdi_core_homepage')}}">Accueil</a></li>
+        <li><a href="#">Produits</a></li>
         <li><a href="#">Stores</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+		{% if is_granted("IS_AUTHENTICATED_REMEMBERED")%}
+			<li {% if 'fos_user_' in app.request.attributes.get('_route')%} class="active dropdown" {% else %} class="dropdown" {% endif %}>
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span> {{ app.user.username }}<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li {% if 'fos_user_profile_show' in app.request.attributes.get('_route') %} class="active" {% endif %}>
+					<a href="{{path('fos_user_profile_show')}}"><span class="glyphicon glyphicon-user"></span> Consulter le profil</a>
+					</li>
+					<li {% if 'fos_user_profile_edit' in app.request.attributes.get('_route') %} class="active" {% endif %}>
+					<a href="{{path('fos_user_profile_edit')}}"><span class="glyphicon glyphicon-edit"></span> Modifier le profil</a>
+					</li>
+					<li {% if 'fos_user_change_password' in app.request.attributes.get('_route') %} class="active" {% endif %}>
+					<a href="{{path('fos_user_change_password')}}"><span class="glyphicon glyphicon-lock"></span> Modifier le mot de passe</a>
+					</li>
+					<li {% if 'fos_user_security_logout' in app.request.attributes.get('_route') %} class="active" {% endif %}>
+					<a href="{{path('fos_user_security_logout')}}"><span class="glyphicon glyphicon-logout"></span> Se déconnecter</a>
+					</li>
+				</ul>
+			</li>
+			<li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Panier</a></li>
+		{% else %}
+			<li><a href="{{path('fos_user_security_login')}}"><span class="glyphicon glyphicon-log-in"></span> Se connecter</a></li>
+			<li><a href="{{path('fos_user_registration_register')}}"><span class="glyphicon glyphicon-user"></span> S'inscrire</a></li>
+		{% endif %}
       </ul>
     </div>
   </div>

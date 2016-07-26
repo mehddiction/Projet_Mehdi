@@ -1,3 +1,19 @@
-mehdie_commerce_homepage:
-    path:     /
-    defaults: { _controller: MEHDIECommerceBundle:Default:index }
+mehdie_commerce_products:
+    path:     /products
+    defaults: { _controller: MEHDIECommerceBundle:Product:index }
+
+mehdie_commerce_products_add:
+    path:     /products/add
+    defaults: { _controller: MEHDIECommerceBundle:Product:add }
+    
+mehdie_commerce_products_edit:
+    path:     /products/edit/{id}
+    defaults: { _controller: MEHDIECommerceBundle:Product:edit }
+    requirements:
+        id: \d+
+    
+mehdie_commerce_products_delete:
+    path:     /products/delete/{id}
+    defaults: { _controller: MEHDIECommerceBundle:Product:delete }
+    requirements:
+        id: \d+

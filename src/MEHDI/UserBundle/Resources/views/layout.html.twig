@@ -1,0 +1,29 @@
+{# src/OC/UserBundle/Resources/views/layout.html.twig #}
+
+{# On étend notre layout #}
+{% extends "::layout.html.twig" %}
+{#On ne met pas le chemin complet car ce fichier ne se trouve pas dans notre Bundle#}
+
+{# Dans notre layout, il faut définir le block body #}
+{% block body %}
+	{% block titre_page %}
+	
+	{% endblock %}
+
+  {# On affiche les messages flash que définissent les contrôleurs du bundle #}
+  {% for key, messages in app.session.flashbag.all() %}
+	{% for message in messages %}
+		<div class="alert alert-{{ key }}">
+		  {{ message|trans({}, 'FOSUserBundle') }}
+		</div>
+	{% endfor %}
+  {% endfor %}
+
+  {# On définit ce block, dans lequel vont venir s'insérer les autres vues du bundle #}
+  {% block fos_user_content %}
+  {{form_start(form, {'attr': {'class': 'form-vertical'}})}}
+	{{ form_row(form.adresse)}}
+  {{form_end(form)}}
+  {% endblock fos_user_content %}
+
+{% endblock %}

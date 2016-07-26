@@ -1,0 +1,12 @@
+{% extends "MehdiUserBundle::layout.html.twig" %}
+	{% block titre_page %}
+		<h1>Profil</h1><hr/>
+	{% endblock %}
+{% block fos_user_content %}
+	{% trans_default_domain 'FOSUserBundle' %}
+		<div class="fos_user_user_show">
+			<p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
+			<p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+		</div>
+	
+{% endblock fos_user_content %}
