@@ -1,0 +1,27 @@
+MEHDI\ECommerceBundle\Entity\Product:
+    type: entity
+    table: null
+    repositoryClass: MEHDI\ECommerceBundle\Repository\ProductRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        libelle:
+            type: string
+            length: 255
+        prixUnitaire:
+            type: float
+        quantiteRestante:
+            type: integer
+        dateAjout:
+            type: date
+        evaluation:
+            type: float
+        idCategorie:
+            type: integer
+        idClient:
+            type: integer
+    lifecycleCallbacks: {  }

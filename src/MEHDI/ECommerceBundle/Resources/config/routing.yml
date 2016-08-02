@@ -17,3 +17,23 @@ mehdie_commerce_products_delete:
     defaults: { _controller: MEHDIECommerceBundle:Product:delete }
     requirements:
         id: \d+
+        
+mehdie_commerce_category:
+    path:     /category
+    defaults: { _controller: MEHDIECommerceBundle:Category:index }
+
+mehdie_commerce_category_add:
+    path:     /category/add
+    defaults: { _controller: MEHDIECommerceBundle:Category:add }
+    
+mehdie_commerce_category_edit:
+    path:     /category/edit/{id}
+    defaults: { _controller: MEHDIECommerceBundle:Category:edit }
+    requirements:
+        id: \d+
+    
+mehdie_commerce_category_delete:
+    path:     /category/delete/{id}
+    defaults: { _controller: MEHDIECommerceBundle:Category:delete }
+    requirements:
+        id: \d+

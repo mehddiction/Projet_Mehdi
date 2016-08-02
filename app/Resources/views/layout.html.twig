@@ -49,7 +49,12 @@
       <ul class="nav navbar-nav">
         <li {% if 'mehdi_core_homepage' in app.request.attributes.get('_route')%} class="active" {% endif %}><a href="{{path('mehdi_core_homepage')}}">Accueil</a></li>
         <li><a href="#">Produits</a></li>
-        <li><a href="#">Stores</a></li>
+        <li><a href="#">A vendre</a></li>
+		{%if is_granted('ROLE_ADMIN') %}
+			<li {% if 'mehdie_commerce_category' in app.request.attributes.get('_route')%} class="active" {% endif %}>
+				<a href="{{ path('mehdie_commerce_category')}}">Catégories</a>
+			</li>
+		{% endif %}
       </ul>
       <ul class="nav navbar-nav navbar-right">
 		{% if is_granted("IS_AUTHENTICATED_REMEMBERED")%}
