@@ -1,6 +1,10 @@
 mehdie_commerce_products:
-    path:     /products
-    defaults: { _controller: MEHDIECommerceBundle:Product:index }
+    path:     /products/{page}
+    defaults: 
+        _controller: MEHDIECommerceBundle:Product:index
+        page: 1
+    requirements:
+        page: \d*
 
 mehdie_commerce_products_add:
     path:     /products/add
@@ -15,6 +19,12 @@ mehdie_commerce_products_edit:
 mehdie_commerce_products_delete:
     path:     /products/delete/{id}
     defaults: { _controller: MEHDIECommerceBundle:Product:delete }
+    requirements:
+        id: \d+
+        
+mehdie_commerce_products_view:
+    path:     /products/view/{id}
+    defaults: { _controller: MEHDIECommerceBundle:Product:view }
     requirements:
         id: \d+
         
@@ -37,3 +47,6 @@ mehdie_commerce_category_delete:
     defaults: { _controller: MEHDIECommerceBundle:Category:delete }
     requirements:
         id: \d+
+        
+        
+        

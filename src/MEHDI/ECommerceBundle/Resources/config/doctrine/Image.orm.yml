@@ -1,0 +1,19 @@
+MEHDI\ECommerceBundle\Entity\Image:
+    type: entity
+    table: null
+    repositoryClass: MEHDI\ECommerceBundle\Repository\ImageRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        url:
+            type: string
+            length: 255
+        alt:
+            type: string
+            length: 255
+            nullable: true
+    lifecycleCallbacks: {  }

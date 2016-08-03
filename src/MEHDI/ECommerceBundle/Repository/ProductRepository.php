@@ -2,6 +2,8 @@
 
 namespace MEHDI\ECommerceBundle\Repository;
 
+use Doctrine\ORM\Tools\Pagination\Paginator;
+
 /**
  * ProductRepository
  *
@@ -21,6 +23,27 @@ class ProductRepository extends \Doctrine\ORM\EntityRepository
 			->setParameter('id',$categoryId)
 			->getSingleScalarResult();
 		
+	}
+	
+	public function getProductsByUser($page, $nbPerPage, $userId){
+		$query=$this->createQueryBuilder('p')
+			->leftJoin('p.image', 'i')
+			->addSelect('i')
+			->leftJoin('p.category', 'c')
+			->addSelect('c')
+			->join('p.client', 'u')
+			->where('u.id = :id')
+			->orderBy('p.dateAjout', 'DESC')
+			->getQuery()
+			->setParameter('id',$userId)
+		;
+		
+		$query
+			->setFirstResult(($page-1)*$nbPerPage)
+			->setMaxResults($nbPerPage)
+		;
+
+	return new Paginator($query, true);
 	}
 	
 	

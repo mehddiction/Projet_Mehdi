@@ -13,15 +13,41 @@ MEHDI\ECommerceBundle\Entity\Product:
             type: string
             length: 255
         prixUnitaire:
-            type: float
+            type: decimal
+            precision: 10
+            scale: '2'
         quantiteRestante:
             type: integer
         dateAjout:
-            type: date
+            type: datetime
         evaluation:
-            type: float
-        idCategorie:
-            type: integer
-        idClient:
-            type: integer
+            type: decimal
+            precision: 10
+            scale: '2'
+        description:
+            type: text
+        client:
+            type: MEHDI\UserBundle\Entity\User
+            manyToOne:
+                user:
+                    targetEntity: User
+                    joinColumn:
+                        name: user_id 
+                        referencedColumnName: id
+        category:
+            type: MEHDI\ECommerceBundle\Entity\Category
+            manyToOne:
+                category:
+                    targetEntity: Category
+                    joinColumn:
+                        name: category_id 
+                        referencedColumnName: id   
+        image:
+            type: MEHDI\ECommerceBundle\Entity\Image
+            oneToOne:
+                image:
+                    targetEntity: Image
+                    joinColumn:
+                        name: image_id 
+                        referencedColumnName: id                    
     lifecycleCallbacks: {  }

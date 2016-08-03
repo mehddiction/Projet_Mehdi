@@ -18,9 +18,15 @@ class ProductType extends AbstractType
 	{
 		$builder
 			->add('libelle')
-			->add('prixUnitaire', NumberType::class)
+			->add('description',TextAreaType::class)
+			->add('image', ImageType::class)
+			->add('prixUnitaire', MoneyType::class)
 			->add('quantiteRestante', IntegerType:class)
-			->add('idCategorie', ProductType::class)
+			->add('category', EntityType::class, array(
+				'class' => 'MEHDI\ECommerceBundle\Entity\Category',
+				'choice_label' => 'nom',
+				'multiple' => false
+			))
 		;
 	}
 	

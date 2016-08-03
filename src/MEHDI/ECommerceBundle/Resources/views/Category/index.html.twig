@@ -1,0 +1,39 @@
+{% extends "::layout.html.twig" %}
+
+{% block body %}
+
+	<h2>Liste des catégories</h2>
+		
+	<div class="well">
+		<a href="{{path('mehdie_commerce_category_add')}}" >Ajouter une catégorie</a>
+	</div>
+	
+	{% for flash_message in app.session.flashBag.get('notice') %}
+		<div class="flash-notice">
+			{{ flash_message }}
+		</div>
+	{% endfor %}
+	
+	{% for flash_message in app.session.flashBag.get('error') %}
+		<div class="flash-error">
+			{{ flash_message }}
+		</div>
+	{% endfor %}
+	
+	{% for category in categories %}
+		<div class="well">
+			<h4>{{category.nom}}</h4>
+			<p>
+				<a href="{{path('mehdie_commerce_category_edit', {'id':category.id})	}}" class="btn btn-default">
+				<i class=glyphicon glyphicon-edit></i>
+				Modifier une catégorie</a>
+				<a href="{{path('mehdie_commerce_category_delete', {'id':category.id})	}}" class="btn btn-default">
+				<i class=glyphicon glyphicon-trash></i>
+				Supprimer une catégorie</a>
+			</p>
+		</div>
+		{% else %}
+			<p>Cette catégorie n'existe pas.</p>
+	{% endfor %}
+		
+{% endblock %}
