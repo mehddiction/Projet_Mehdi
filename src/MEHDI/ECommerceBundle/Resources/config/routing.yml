@@ -28,6 +28,12 @@ mehdie_commerce_products_view:
     requirements:
         id: \d+
         
+mehdie_commerce_products_editQuantite:
+    path:     /products/editQuantite/{id}
+    defaults: { _controller: MEHDIECommerceBundle:Product:editQuantite }
+    requirements:
+        id: \d+
+        
 mehdie_commerce_category:
     path:     /category
     defaults: { _controller: MEHDIECommerceBundle:Category:index }

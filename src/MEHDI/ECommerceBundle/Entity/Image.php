@@ -101,6 +101,11 @@ class Image
         return $this->alt;
     }
 	
+	public function getFile()
+	{
+		return $this->file;
+	}
+	
 	public function setFile(UploadedFile $file){
 		$this->file=$file;
 		if(null!=$this->url){ //sert de vérifier s'il y'a une image pour le produit. Si oui, l'URL de l'ancienne image du produit est enregistré pour supprimer image plus tard

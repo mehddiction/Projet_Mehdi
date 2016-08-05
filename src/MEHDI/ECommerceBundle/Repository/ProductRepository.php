@@ -31,7 +31,7 @@ class ProductRepository extends \Doctrine\ORM\EntityRepository
 			->addSelect('i')
 			->leftJoin('p.category', 'c')
 			->addSelect('c')
-			->join('p.client', 'u')
+			->join('p.user', 'u')
 			->where('u.id = :id')
 			->orderBy('p.dateAjout', 'DESC')
 			->getQuery()

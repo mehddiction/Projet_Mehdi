@@ -48,7 +48,7 @@ class Product
 	
 	
 	public function __construct(){
-		$this->date=new \DateTime();
+		$this->dateAjout=new \DateTime();
 		$this->quantiteRestante=0;
 		$this->evaluation='0.0';
 	}
@@ -206,69 +206,22 @@ class Product
     {
         return $this->description;
     }
-    /**
-     * @var MEHDI\UserBundle\Entity\User
-     */
-    private $client;
 
     /**
-     * @var MEHDI\ECommerceBundle\Entity\Category
-     */
-    private $category;
-
-    /**
-     * @var MEHDI\ECommerceBundle\Entity\Image
+     * @var \MEHDI\ECommerceBundle\Entity\Image
      */
     private $image;
 
+    /**
+     * @var \MEHDI\UserBundle\Entity\User
+     */
+    private $user;
 
     /**
-     * Set client
-     *
-     * @param \MEHDI\UserBundle\Entity\User $client
-     *
-     * @return Product
+     * @var \MEHDI\ECommerceBundle\Entity\Category
      */
-    public function setClient(\MEHDI\UserBundle\Entity\User $client)
-    {
-        $this->client = $client;
+    private $category;
 
-        return $this;
-    }
-
-    /**
-     * Get client
-     *
-     * @return \MEHDI\UserBundle\Entity\User
-     */
-    public function getClient()
-    {
-        return $this->client;
-    }
-
-    /**
-     * Set category
-     *
-     * @param \MEHDI\ECommerceBundle\Entity\Category $category
-     *
-     * @return Product
-     */
-    public function setCategory(\MEHDI\ECommerceBundle\Entity\Category $category)
-    {
-        $this->category = $category;
-
-        return $this;
-    }
-
-    /**
-     * Get category
-     *
-     * @return \MEHDI\ECommerceBundle\Entity\Category
-     */
-    public function getCategory()
-    {
-        return $this->category;
-    }
 
     /**
      * Set image
@@ -277,7 +230,7 @@ class Product
      *
      * @return Product
      */
-    public function setImage(\MEHDI\ECommerceBundle\Entity\Image $image)
+    public function setImage(\MEHDI\ECommerceBundle\Entity\Image $image = null)
     {
         $this->image = $image;
 
@@ -292,5 +245,53 @@ class Product
     public function getImage()
     {
         return $this->image;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \MEHDI\UserBundle\Entity\User $user
+     *
+     * @return Product
+     */
+    public function setUser(\MEHDI\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \MEHDI\UserBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set category
+     *
+     * @param \MEHDI\ECommerceBundle\Entity\Category $category
+     *
+     * @return Product
+     */
+    public function setCategory(\MEHDI\ECommerceBundle\Entity\Category $category = null)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \MEHDI\ECommerceBundle\Entity\Category
+     */
+    public function getCategory()
+    {
+        return $this->category;
     }
 }

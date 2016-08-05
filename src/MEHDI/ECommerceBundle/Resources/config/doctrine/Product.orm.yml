@@ -25,29 +25,14 @@ MEHDI\ECommerceBundle\Entity\Product:
             precision: 10
             scale: '2'
         description:
-            type: text
-        client:
-            type: MEHDI\UserBundle\Entity\User
-            manyToOne:
-                user:
-                    targetEntity: User
-                    joinColumn:
-                        name: user_id 
-                        referencedColumnName: id
+            type: text              
+    manyToOne:
+        user:
+            targetEntity: MEHDI\UserBundle\Entity\User
         category:
-            type: MEHDI\ECommerceBundle\Entity\Category
-            manyToOne:
-                category:
-                    targetEntity: Category
-                    joinColumn:
-                        name: category_id 
-                        referencedColumnName: id   
+            targetEntity: Category
+    oneToOne:
         image:
-            type: MEHDI\ECommerceBundle\Entity\Image
-            oneToOne:
-                image:
-                    targetEntity: Image
-                    joinColumn:
-                        name: image_id 
-                        referencedColumnName: id                    
+            targetEntity: Image
+            cascade: ["persist","remove"]
     lifecycleCallbacks: {  }

@@ -16,4 +16,10 @@ MEHDI\ECommerceBundle\Entity\Image:
             type: string
             length: 255
             nullable: true
-    lifecycleCallbacks: {  }
+    lifecycleCallbacks: 
+        prePersist: [preUpload]
+        preUpdate:  [preUpload]
+        postPersist: [upload]
+        postUpdate: [upload]
+        preRemove:  [preRemoveUpload]
+        postRemove: [removeUpload]

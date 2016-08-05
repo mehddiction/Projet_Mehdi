@@ -5,9 +5,11 @@ namespace MEHDI\ECommerceBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
-use Symfony\Component\Form\Extension\Core\Type\ProductType;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class ProductType extends AbstractType
 {
@@ -18,10 +20,10 @@ class ProductType extends AbstractType
 	{
 		$builder
 			->add('libelle')
-			->add('description',TextAreaType::class)
+			->add('description',TextareaType::class)
 			->add('image', ImageType::class)
 			->add('prixUnitaire', MoneyType::class)
-			->add('quantiteRestante', IntegerType:class)
+			->add('quantiteRestante', IntegerType::class)
 			->add('category', EntityType::class, array(
 				'class' => 'MEHDI\ECommerceBundle\Entity\Category',
 				'choice_label' => 'nom',

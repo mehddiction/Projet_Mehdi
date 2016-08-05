@@ -1,0 +1,57 @@
+<div class="well">
+	{{ form_start(form, {'attr': {'class':'form-horizontal'}}) }}
+		<div class="form-group">
+			{{ form_label(form.libelle, "Libellé du produit : ", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+			<div class="col-sm-5">
+				{{ form_widget(form.libelle, {'attr': {'class': 'form-control'}})}}
+			</div>
+			<span class="text-danger col-sm-offset-3 col-sm-5" > {{ form_errors(form.libelle)}} </span>
+		</div>
+		
+		<div class="form-group">
+			{{ form_label(form.description, "Description du produit : ", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+			<div class="col-sm-5">
+				{{ form_widget(form.description, {'attr': {'class': 'form-control'}})}}
+			</div>
+			<span class="text-danger col-sm-offset-3 col-sm-5" > {{ form_errors(form.description)}} </span>
+		</div>
+		
+		<div class="form-group">
+			{{ form_label(form.prixUnitaire, "Prix du produit : ", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+			<div class="col-sm-5">
+				{{ form_widget(form.prixUnitaire, {'attr': {'class': 'form-control'}})}}
+			</div>
+			<span class="text-danger col-sm-offset-3 col-sm-5" > {{ form_errors(form.prixUnitaire)}} </span>
+		</div>
+		
+		<div class="form-group">
+			{{ form_label(form.quantiteRestante, "Quantité du produit : ", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+			<div class="col-sm-5">
+				{{ form_widget(form.quantiteRestante, {'attr': {'class': 'form-control', 'min': 0}})}}
+			</div>
+			<span class="text-danger col-sm-offset-3 col-sm-5" > {{ form_errors(form.quantiteRestante)}} </span>
+		</div>
+		
+		<div class="form-group">
+			{{ form_label(form.category, "Catégorie du produit : ", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+			<div class="col-sm-5">
+				{{ form_widget(form.category, {'attr': {'class': 'form-control', 'min': 0}})}}
+			</div>
+			<span class="text-danger col-sm-offset-3 col-sm-5" > {{ form_errors(form.category)}} </span>
+		</div>
+		
+		<div class="form-group">
+			{{ form_label(form.image, "Image : ", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+			<div class="col-sm-5">
+				{{ form_widget(form.image, {'attr': {'class': 'form-control'}})}}
+			</div>
+			<span class="text-danger col-sm-offset-3 col-sm-5" > {{ form_errors(form.image)}} </span>
+		</div>
+		
+		<div class="form-group" style="margin-top:50px">
+			<div class="col-sm-offset-3 col-sm-5">
+				<input class="btn btn-primary" type="submit" value="Valider" />
+			</div>
+		</div>
+	{{ form_end(form) }}
+</div>

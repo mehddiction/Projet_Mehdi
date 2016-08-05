@@ -28,13 +28,6 @@
 </head>
 <body>
 
-<div class="jumbotron">
-  <div class="container text-center">
-    <h1>Online Store</h1>      
-    <p>Mission, Vission & Values</p>
-  </div>
-</div>
-
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -48,7 +41,9 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li {% if 'mehdi_core_homepage' in app.request.attributes.get('_route')%} class="active" {% endif %}><a href="{{path('mehdi_core_homepage')}}">Accueil</a></li>
-        <li><a href="#">Produits</a></li>
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED")%}
+			<li {% if 'mehdie_commerce_products' in app.request.attributes.get('_route')%} class="active" {% endif %}><a href="{{path('mehdie_commerce_products')}}">Produits</a></li>
+		{% endif %}
         <li><a href="#">A vendre</a></li>
 		{%if is_granted('ROLE_ADMIN') %}
 			<li {% if 'mehdie_commerce_category' in app.request.attributes.get('_route')%} class="active" {% endif %}>
