@@ -10,9 +10,9 @@
 	
 	<div class="well">
 		{% for flash_message in app.session.flashBag.get('notice') %}
-			<li class="flash-notice">
+			<p class="flash-notice">
 				{{ flash_message }}
-			</li>
+			</p>
 		{% endfor %}
 	</div>
 	

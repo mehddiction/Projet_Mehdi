@@ -1,0 +1,24 @@
+{% extends "::layout.html.twig" %}
+
+{% block body %}
+	<h2>Modifier un produit</h2>
+		
+	<div class="well">
+	{{ form_start(form, {'attr': {'class':'form-horizontal'}}) }}
+		<div class="form-group">
+			{{ form_label(form.quantiteRestante, "Quantité du produit : ", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+			<div class="col-sm-5">
+				{{ form_widget(form.quantiteRestante, {'attr': {'class': 'form-control', 'min': 0}})}}
+			</div>
+			<span class="text-danger col-sm-offset-3 col-sm-5" > {{ form_errors(form.quantiteRestante)}} </span>
+		</div>
+		
+		<div class="form-group" style="margin-top:50px">
+			<div class="col-sm-offset-3 col-sm-5">
+				<input class="btn btn-primary" type="submit" value="Valider" />
+			</div>
+		</div>
+	{{ form_end(form) }}
+	</div>
+		
+{% endblock %}

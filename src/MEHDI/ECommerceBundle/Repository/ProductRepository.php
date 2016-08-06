@@ -25,6 +25,28 @@ class ProductRepository extends \Doctrine\ORM\EntityRepository
 		
 	}
 	
+	public function getProductsByCustomOrder($page, $nbPerPage, $sort){
+		$order=($sort== 'prixUnitaire') ? 'ASC' : 'DESC' ;
+		$var=($sort=='category') ? 'c.nom' : 'p.'.$sort;
+	
+		$query=$this->createQueryBuilder('p')
+			->leftJoin('p.image', 'i')
+			->addSelect('i')
+			->leftJoin('p.category', 'c')
+			->addSelect('c')
+			->where('p.quantiteRestante>0')
+			->orderBy($var, $order)
+			->getQuery()
+		;
+		
+		$query
+			->setFirstResult(($page-1)* $nbPerPage)
+			->setMaxResults($nbPerPage)
+		;
+		
+		return new Paginator($query, true);
+	}
+	
 	public function getProductsByUser($page, $nbPerPage, $userId){
 		$query=$this->createQueryBuilder('p')
 			->leftJoin('p.image', 'i')

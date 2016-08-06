@@ -49,7 +49,7 @@ class CategoryController extends Controller
 		$category = $em->getRepository('MEHDIECommerceBundle:Category')->find($id);
 		
 		if(null == $category){
-			throw new NotFoundHttpException("Cette catÃ©gorie d'ID ".$id." n'existe pas.");
+			throw new NotFoundHttpException("Cette catégorie d'ID ".$id." n'existe pas.");
 		}
 		
 		$form = $this->createForm(CategoryType::class, $category);
@@ -58,7 +58,7 @@ class CategoryController extends Controller
 		if($form->isValid()){
 			$em->flush();
 
-			$request->getSession()->getFlashBag()->add('notice', 'La catÃ©gorie '.$category->getNom().' est modifiÃ©e.');
+			$request->getSession()->getFlashBag()->add('notice', 'La catégorie '.$category->getNom().' est modifiée.');
 			return $this->redirect($this->generateUrl('mehdie_commerce_category'));
 			}
 		
@@ -73,7 +73,7 @@ class CategoryController extends Controller
 		$category = $em->getRepository('MEHDIECommerceBundle:Category')->find($id);
 		
 		if(null == $category){
-			throw new NotFoundHttpException("Cette catÃ©gorie d'ID ".$id." n'existe pas.");
+			throw new NotFoundHttpException("Cette catégorie d'ID ".$id." n'existe pas.");
 		}
 		
 		//$count = $em->getRepository('MEHDIECommerceBundle:Product')->countProductWithCategory($id);
@@ -84,7 +84,7 @@ class CategoryController extends Controller
 			
 			}
 		else
-			$request->getSession()->getFlashBag()->add('error', 'La catÃ©gorie '.$category->getNom().' ne peut Ãªtre supprimÃ©e car elle contient des produits.');
+			$request->getSession()->getFlashBag()->add('error', 'La catégorie '.$category->getNom().' ne peut être supprimée car elle contient des produits.');
 		
 		return $this->redirect($this->generateUrl('mehdie_commerce_category'));
 	}

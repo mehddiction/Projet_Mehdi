@@ -4,6 +4,7 @@ namespace MEHDI\ECommerceBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Image
@@ -26,6 +27,11 @@ class Image
      */
     private $alt;
 
+	/**
+	*	@Assert\File(
+	*	maxSize="6144k",
+	*	)
+	*/
 	private $file;
 	
 	private $tempFileName;
@@ -115,24 +121,16 @@ class Image
 		}
 	}
 	
-	/**
-	* @ORM\PrePersist()
-	* @ORM\PreUpdate()
-	*/
 	public function preUpload(){
 		//Si absence de fichier
 		if(null==$this->file){
 			return;
 		}
 		//les deux fct en dessous appartiennent à Symfony 
-		$this->url=$this->file->guessExtension(); //initialisation du fichier par l'utilisation d'une fct où on récupère l'extension
+		$this->url=$this->file->getExtension(); //initialisation du fichier par l'utilisation d'une fct où on récupère l'extension
 		$this->alt=$this->file->getClientOriginalName(); //nom du fichier
 	}
 	
-	/**
-	* @ORM\PostPersist()
-	* @ORM\PostUpdate()
-	*/
 	public function upload(){
 		if(null==$this->file){
 			return;
@@ -150,17 +148,10 @@ class Image
 		); //copie l'image que le client vient de mettre
 	}
 	
-	/**
-	*	@ORM\PreRemove()
-	*/
 	public function preRemoveUpload(){
 		//Avant la suppression, on enregistre le nom complet du fichier
 		$this->tempFileName=$this->getUploadRootDir().'/'.$this->id.'.'.$this->url;
 	}
-	
-	/**
-	*	@ORM\PostRemove()
-	*/
 	
 	public function removeUpload(){
 		//Suprression de l'image lors de la suppression du produit

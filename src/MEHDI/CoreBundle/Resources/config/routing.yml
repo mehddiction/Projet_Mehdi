@@ -1,3 +1,17 @@
 mehdi_core_homepage:
-    path:     /
-    defaults: { _controller: MEHDICoreBundle:Core:index }
+    path:     /{page}
+    defaults:  
+        _controller: MEHDICoreBundle:Core:index 
+        page: 1
+    requirements:
+        page: \d+
+        
+mehdi_core_homeView:
+    path:   /view/{id}
+    defaults:   { _controller: MEHDICoreBundle:Core:homeView }
+    requirements:
+        id: \d+
+
+    
+    
+
