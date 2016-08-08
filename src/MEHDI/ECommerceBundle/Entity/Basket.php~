@@ -1,0 +1,61 @@
+<?php
+
+namespace MEHDI\ECommerceBundle\Entity;
+
+/**
+ * Basket
+ */
+class Basket
+{
+    /**
+     * @var int
+     */
+    private $id;
+
+    /**
+     * @var int
+     */
+    private $quantiteChoisie;
+
+	public function __construct(){
+		$this->quantiteChoisie=1;
+	}
+	
+	
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set quantiteChoisie
+     *
+     * @param integer $quantiteChoisie
+     *
+     * @return Basket
+     */
+	 
+	 
+    public function setQuantiteChoisie($quantiteChoisie)
+    {
+        $this->quantiteChoisie = $quantiteChoisie;
+
+        return $this;
+    }
+
+    /**
+     * Get quantiteChoisie
+     *
+     * @return int
+     */
+    public function getQuantiteChoisie()
+    {
+        return $this->quantiteChoisie;
+    }
+}
+

@@ -59,5 +59,15 @@
 		{% else %}
 			<p>Pas encore de produits</p>
 	{% endfor %}
-	
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	<script>
+		function insertProduct(id){
+			$.post('{{path('mehdi_core_addinBasket')}}', {data: id}, function(response)){
+				$('.info').text(response.info)
+			}, "json");
+		}
+	</script>
 {% endblock %}

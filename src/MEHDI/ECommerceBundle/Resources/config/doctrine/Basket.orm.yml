@@ -1,0 +1,20 @@
+MEHDI\ECommerceBundle\Entity\Basket:
+    type: entity
+    table: null
+    repositoryClass: MEHDI\ECommerceBundle\Repository\BasketRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        quantiteChoisie:
+            type: integer
+    manyToOne:
+            user:
+                targetEntity: MEHDI\UserBundle\Entity\User
+            product:
+                targetEntity: Product
+            
+    lifecycleCallbacks: {  }

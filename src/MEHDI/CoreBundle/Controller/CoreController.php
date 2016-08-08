@@ -4,6 +4,7 @@ namespace MEHDI\CoreBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException; 
+use MEHDI\ECommerceBundle\Entity\Basket;
 use Symfony\Component\HttpFoundation\Request;
 
 
@@ -46,4 +47,18 @@ class CoreController extends Controller
 	public function homeViewAction(){
 		
 	}
+	
+	public function addInBasketAction(Request $request){
+		$id = $request->request->get('data');
+		$em = $this->getDoctrine()->getManager();
+		$product = $em->getRepository('MEHDIECommerceBundle:Product')->find($id);
+		$basket = $em->getRepository('MEHDIECommerceBundle:Basket')->findOneByProduct($product);
+		
+		if($basket==null){
+			$basket=new Basket();
+			$basket->setUser($this->getUser());
+			$basket->setProduct($product);
+			
+		}
+	)
 }
