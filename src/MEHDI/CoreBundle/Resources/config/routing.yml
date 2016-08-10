@@ -12,7 +12,6 @@ mehdi_core_homeView:
     requirements:
         id: \d+
 
-    
 mehdi_core_addinBasket:
     path:   /addinBasket
     defaults:   { _controller: MEHDICoreBundle:Core:addInBasket }

@@ -54,5 +54,26 @@ mehdie_commerce_category_delete:
     requirements:
         id: \d+
         
+mehdie_commerce_basket_index:
+    path:   /basket
+    defaults: { _controller: MEHDIECommerceBundle:Basket:index }
+    
+mehdie_commerce_basket_deleteProd:
+    path:   /basket/delete/{id}
+    defaults: { _controller: MEHDIECommerceBundle:Basket:deleteProd }
+    requirements:
+        id: \d+
         
+mehdie_commerce_basket_editQty:
+    path:   /basket/editQty/{id}
+    defaults: { _controller: MEHDIECommerceBundle:Basket:editQty }
+    requirements:
+        id: \d+
         
+mehdie_commerce_basket_order:
+    path:   /basket/order
+    defaults: { _controller: MEHDIECommerceBundle:Basket:order }
+    
+mehdie_commerce_commande_index:
+    path:   /commande
+    defaults: { _controller: MEHDIECommerceBundle:Commande:index }

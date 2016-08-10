@@ -26,7 +26,7 @@ class ProductRepository extends \Doctrine\ORM\EntityRepository
 	}
 	
 	public function getProductsByCustomOrder($page, $nbPerPage, $sort){
-		$order=($sort== 'prixUnitaire') ? 'ASC' : 'DESC' ;
+		$order=($sort== 'prixUnitaire' || $sort=='category') ? 'ASC' : 'DESC' ; //Test si on choisit d'afficher par Prix unitaire, on affiche par prix ascendant. Si pas, ce sera par date la plus récente
 		$var=($sort=='category') ? 'c.nom' : 'p.'.$sort;
 	
 		$query=$this->createQueryBuilder('p')

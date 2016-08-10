@@ -1,0 +1,77 @@
+{% extends "::layout.html.twig" %}
+
+{% block body %}
+
+	<h2>Mon panier</h2>
+	
+	{% if products |length > 0 %}
+		<div>
+			<table class="table table-condensed table-stripped">
+				<thead>
+					<tr>
+						<th></th>
+						<th>Libellé</th>
+						<th>Description</th>
+						<th>Prix unitaire</th>
+						<th>Total (€)</th>
+						<th>Quantité</th>
+						<th>Catégorie</th>
+						<th></th>
+					</tr>
+				</thead>
+				{% set sum=0 %}
+				{% for basket in products %}
+					<tr>
+						<td>
+							<img class="img-responsive img-rounded" width="90" height="90" src="{{ asset(basket.product.image.webPath) }}" alt="{{ basket.product.image.alt}}"/>
+						</td>
+						<td>
+							{{basket.product.libelle}}
+						</td>
+						<td>
+							{{basket.product.description|slice(0, 20) ~ '...' }}
+						</td>
+						<td>
+							{{basket.product.prixUnitaire}}
+						</td>
+						<td>
+							{{basket.product.prixUnitaire*basket.quantiteChoisie}}
+							{% set sum = sum + (basket.product.prixUnitaire*basket.quantiteChoisie) %}
+						</td>
+						<td>
+							{{basket.quantiteChoisie}}
+						</td>
+						<td>
+							{{basket.product.category.nom}}
+						</td>
+						<td>
+							<div class="dropdown">
+								<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Actions<span class="caret"></span></button>
+								<ul class="dropdown-menu" >
+									<li><a href="{{ path('mehdie_commerce_basket_editQty', {'id': basket.id})}}">Modifier la quantité</a></li>
+									<li><a href="{{ path('mehdie_commerce_basket_deleteProd', {'id': basket.id})}}">Supprimer le produit</a></li>								
+								</ul>
+							</div>
+						</td>						
+					</tr>
+				{% endfor %}
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td><b>Total</b></td>
+					<td><b>{{ sum }} €</b></td>
+				</tr>
+			</table>
+		</div>
+	<div class="pull-right">
+		<a href="{{path('mehdie_commerce_basket_order')}}" class="btn btn-primary">Commander</a>
+	</div>
+	{% else %}
+		<p>Panier vide.</p>
+	{% endif %}
+		
+{% endblock %}

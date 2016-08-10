@@ -3,9 +3,9 @@
 namespace MEHDI\ECommerceBundle\Entity;
 
 /**
- * Basket
+ * Commande
  */
-class Basket
+class Commande
 {
     /**
      * @var int
@@ -13,15 +13,21 @@ class Basket
     private $id;
 
     /**
+     * @var \DateTime
+     */
+    private $dateCommande;
+
+    /**
+     * @var string
+     */
+    private $montant;
+
+    /**
      * @var int
      */
     private $quantiteChoisie;
 
-	public function __construct(){
-		$this->quantiteChoisie=1;
-	}
-	
-	
+
     /**
      * Get id
      *
@@ -33,14 +39,60 @@ class Basket
     }
 
     /**
+     * Set dateCommande
+     *
+     * @param \DateTime $dateCommande
+     *
+     * @return Commande
+     */
+    public function setDateCommande($dateCommande)
+    {
+        $this->dateCommande = $dateCommande;
+
+        return $this;
+    }
+
+    /**
+     * Get dateCommande
+     *
+     * @return \DateTime
+     */
+    public function getDateCommande()
+    {
+        return $this->dateCommande;
+    }
+
+    /**
+     * Set montant
+     *
+     * @param string $montant
+     *
+     * @return Commande
+     */
+    public function setMontant($montant)
+    {
+        $this->montant = $montant;
+
+        return $this;
+    }
+
+    /**
+     * Get montant
+     *
+     * @return string
+     */
+    public function getMontant()
+    {
+        return $this->montant;
+    }
+
+    /**
      * Set quantiteChoisie
      *
      * @param integer $quantiteChoisie
      *
-     * @return Basket
+     * @return Commande
      */
-	 
-	 
     public function setQuantiteChoisie($quantiteChoisie)
     {
         $this->quantiteChoisie = $quantiteChoisie;
@@ -57,11 +109,6 @@ class Basket
     {
         return $this->quantiteChoisie;
     }
-	
-	public function incrementQuantite(){
-		$this->quantiteChoisie++;
-	}
-	
     /**
      * @var \MEHDI\UserBundle\Entity\User
      */
@@ -78,7 +125,7 @@ class Basket
      *
      * @param \MEHDI\UserBundle\Entity\User $user
      *
-     * @return Basket
+     * @return Commande
      */
     public function setUser(\MEHDI\UserBundle\Entity\User $user = null)
     {
@@ -102,7 +149,7 @@ class Basket
      *
      * @param \MEHDI\ECommerceBundle\Entity\Product $product
      *
-     * @return Basket
+     * @return Commande
      */
     public function setProduct(\MEHDI\ECommerceBundle\Entity\Product $product = null)
     {

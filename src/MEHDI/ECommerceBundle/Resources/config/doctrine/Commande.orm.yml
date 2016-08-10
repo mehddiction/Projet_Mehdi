@@ -1,0 +1,25 @@
+MEHDI\ECommerceBundle\Entity\Commande:
+    type: entity
+    table: null
+    repositoryClass: MEHDI\ECommerceBundle\Repository\CommandeRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        dateCommande:
+            type: datetime
+        montant:
+            type: decimal
+            precision: 10
+            scale: '3'
+        quantiteChoisie:
+            type: integer
+    manyToOne:
+            user:
+                targetEntity: MEHDI\UserBundle\Entity\User    
+            product:
+                targetEntity: Product
+    lifecycleCallbacks: {  }
