@@ -1,0 +1,37 @@
+{% extends "::layout.html.twig" %}
+
+{% block body %}
+
+	<h2>Ma commande</h2>
+	
+		<div>
+			<table class="table table-condensed table-stripped">
+				<thead>
+					<tr>
+						<th></th>
+						<th>Libellé</th>
+						<th>Description</th>
+						<th>Prix unitaire</th>
+					</tr>
+				</thead>
+				{% set sum=0 %}
+				{% for product in products %}
+					<tr>
+						<td>
+							<img class="img-responsive img-rounded" width="90" height="90" src="{{ asset(product.image.webPath) }}" alt="{{ product.image.alt}}"/>
+						</td>
+						<td>
+							{{product.libelle}}
+						</td>
+						<td>
+							{{product.description|slice(0, 20) ~ '...' }}
+						</td>
+						<td>
+							{{product.prixUnitaire}}
+						</td>						
+					</tr>
+				{% endfor %}
+			</table>
+		</div>
+		
+{% endblock %}

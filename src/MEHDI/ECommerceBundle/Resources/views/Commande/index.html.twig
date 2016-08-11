@@ -1,0 +1,45 @@
+{% extends "::layout.html.twig" %}
+
+{% block body %}
+
+	<h2>Mes commandes</h2>
+	
+	{% if commandes |length > 0 %}{# tableau commandes que l'on récupère du controller #}
+		<div>
+			<table class="table table-condensed table-stripped">
+				<thead>
+					<tr>
+						<th>N° de commande</th>
+						<th>Date</th>
+						<th>Total (€)</th>
+						<th>Etat</th>
+						<th>Détails</th>
+					</tr>
+				</thead>
+				{% set sum=0 %}
+				{% for cmd in commandes %}
+					<tr>
+						<td>
+							{{cmd.id}}
+						</td>
+						<td>
+							{{cmd.dateCommande |date("d/m/Y")}}
+						</td>
+						<td>
+							{{cmd.montant}} €
+						</td>
+						<td>
+							{{cmd.etat}}
+						</td>
+						<td>
+							<a href="{{ path('mehdie_commerce_commande_details', {'id': cmd.id})}}">Détails</a>
+						</td>					
+					</tr>
+				{% endfor %}
+			</table>
+		</div>
+	{% else %}
+		<p>Aucune commande encore effectuée.</p>
+	{% endif %}
+		
+{% endblock %}

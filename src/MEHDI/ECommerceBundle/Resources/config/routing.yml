@@ -77,3 +77,7 @@ mehdie_commerce_basket_order:
 mehdie_commerce_commande_index:
     path:   /commande
     defaults: { _controller: MEHDIECommerceBundle:Commande:index }
+    
+mehdie_commerce_commande_details:
+    path:   /commande/details/{id}
+    defaults: { _controller: MEHDIECommerceBundle:Commande:details }    

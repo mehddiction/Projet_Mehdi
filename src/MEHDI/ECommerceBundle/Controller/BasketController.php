@@ -3,6 +3,7 @@
 namespace MEHDI\ECommerceBundle\Controller;
 
 use MEHDI\ECommerceBundle\Entity\Basket;
+use MEHDI\ECommerceBundle\Entity\Commande;
 use MEHDI\ECommerceBundle\Form\BasketType;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -23,8 +24,24 @@ class BasketController extends Controller
     }
 	
 	public function orderAction()
-    {
+    {	
+		$em = $this->getDoctrine()->getManager();
+		$products = $em->getRepository('MEHDIECommerceBundle:Basket')->findByUser($this->getUser());
+		$commande=new Commande();
+		$commande->setEtat("Expedie")->setUser($this->getUser());
+		$montant=0;
+		foreach($products as $prod){
+			$montant+=$prod->getProduct()->getPrixUnitaire()*$prod->getQuantiteChoisie();
+			$commande->addProduct($prod->getProduct());
+			$qty=($prod->getQuantiteChoisie()>$prod->getProduct()->getQuantiteRestante())?$prod->getProduct()->getQuantiteRestante():$prod->getQuantiteChoisie();
+			$prod->getProduct()->decreaseQty($qty);
+		$em->remove($prod);
+		}
+		$commande->setMontant($montant);
+		$em->persist($commande);
+		$em->flush();
 		
+		return $this->redirect($this->generateUrl('mehdie_commerce_commande_index'));
     }
 	
 	public function editQtyAction($id, Request $request)

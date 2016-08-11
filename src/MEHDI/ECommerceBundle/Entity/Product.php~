@@ -39,16 +39,15 @@ class Product
     /**
      * @var string
      */
-    private $evaluation;
-
-    /**
-     * @var string
-     */
     private $description;
+	
+	public function decreaseQty($qty){
+		$this->quantiteRestante-=$qty;
+	}
 	
 	
 	public function __construct(){
-		$this->date=new \DateTime();
+		$this->dateAjout=new \DateTime();
 		$this->quantiteRestante=0;
 		$this->evaluation='0.0';
 	}
@@ -157,30 +156,6 @@ class Product
     public function getDateAjout()
     {
         return $this->dateAjout;
-    }
-
-    /**
-     * Set evaluation
-     *
-     * @param string $evaluation
-     *
-     * @return Product
-     */
-    public function setEvaluation($evaluation)
-    {
-        $this->evaluation = $evaluation;
-
-        return $this;
-    }
-
-    /**
-     * Get evaluation
-     *
-     * @return string
-     */
-    public function getEvaluation()
-    {
-        return $this->evaluation;
     }
 
     /**

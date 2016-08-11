@@ -15,7 +15,6 @@
 			<select name="sort" onchange="this.form.submit()">
 				<option {% if sort is defined and sort == "prixUnitaire" %} selected {% endif %} value="prixUnitaire">Prix </option>
 				<option {% if sort is defined and sort == "category" %} selected {% endif %} value="category">Catégorie </option>
-				<option {% if sort is defined and sort == "evaluation" %} selected {% endif %} value="evaluation">Evaluation </option>
 				<option {% if sort is defined and sort == "dateAjout" %} selected {% endif %} value="dateAjout">Date d'ajout </option>				
 			</select>
 		</form>
@@ -32,13 +31,6 @@
 					<i class="glyphicon glyphicon-user"></i><em> {{product.user.username}} </em><br>
 					<i class="glyphicon glyphicon-calendar"></i><em> {{product.dateAjout|date("d/m/Y à g:i")}} </em><br>
 					<i class="glyphicon glyphicon-euro"></i><em> {{product.prixUnitaire}} </em><br>
-					{% for i in 1..10 %}
-						{% if loop.index <= product.evaluation %}
-							<i class="glyphicon glyphicon-star"></i>
-						{% else %}
-							<i class="glyphicon glyphicon-star-empty"></i>
-						{% endif %}
-					{% endfor %}
 				</div>  
 				<div class="panel-body">
 					<img class="img-responsive img-rounded" style="width:180px; height:130px; margin:auto" src="{{ asset(product.image.webPath)}}" alt="{{ product.image.alt }}">

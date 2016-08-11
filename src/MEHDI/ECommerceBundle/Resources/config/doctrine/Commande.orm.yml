@@ -15,11 +15,13 @@ MEHDI\ECommerceBundle\Entity\Commande:
             type: decimal
             precision: 10
             scale: '3'
-        quantiteChoisie:
-            type: integer
+        etat:
+            type: string
+            length: 255
     manyToOne:
             user:
                 targetEntity: MEHDI\UserBundle\Entity\User    
-            product:
+    manyToMany:        
+            products:
                 targetEntity: Product
     lifecycleCallbacks: {  }

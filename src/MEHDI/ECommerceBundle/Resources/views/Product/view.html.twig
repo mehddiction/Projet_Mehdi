@@ -48,18 +48,6 @@
 						{{ product.dateAjout|date("d/m/Y à g:i")}}
 					</div>
 				</div>
-				<div class="form-group">
-					<label class="col-sm-4 control-label" >Evaluation :</label>
-					<div class="col-sm-8 d">
-						{% for i in 1..10%}
-							{% if loop.index <= product.evaluation %}
-								<i class="glyphicon glyphicon-star"></i>
-							{% else %}
-								<i class="glyphicon glyphicon-star-empty"></i>
-							{% endif %}
-						{% endfor %}
-					</div>
-				</div>
 			</form>
 		</div>
 	</div>
